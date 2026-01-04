@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CryptoTracker | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#020617;
+  --card:#0f172a;
+  --border:#1f2937;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --accent:#3b82f6;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI}
+body{background:var(--bg);color:var(--text)}
+
+header{
+  padding:16px 30px;
+  border-bottom:1px solid var(--border);
+}
+header a{
+  color:var(--accent);
+  text-decoration:none;
+}
+
+.container{
+  padding:20px;
+  max-width:900px;
+  margin:auto;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;
+  margin-bottom:12px;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+if(!localStorage.getItem("token")){
+  location.href="index.html";
+}
+</script>
+
+
+</body>
+</html>

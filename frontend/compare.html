@@ -1,0 +1,64 @@
+<script>
+if(!localStorage.getItem("token")){
+  location.href="index.html";
+}
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Compare Coins</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body{background:#0b1020;color:white;font-family:Segoe UI}
+</style>
+</head>
+<body>
+
+<h2>Compare Cryptos</h2>
+<button onclick="location.href='index.html'">← Back</button>
+
+<br><br>
+
+<select id="c1">
+  <option value="bitcoin">Bitcoin</option>
+  <option value="ethereum">Ethereum</option>
+  <option value="solana">Solana</option>
+</select>
+
+<select id="c2">
+  <option value="ethereum">Ethereum</option>
+  <option value="bitcoin">Bitcoin</option>
+  <option value="solana">Solana</option>
+</select>
+
+<button onclick="compare()">Compare</button>
+
+<canvas id="cmp"></canvas>
+
+<script>
+let cmpChart;
+
+async function compare(){
+  const a=c1.value,b=c2.value;
+  const da=await fetch(`https://api.coingecko.com/api/v3/coins/${a}/market_chart?vs_currency=usd&days=7`).then(r=>r.json());
+  const db=await fetch(`https://api.coingecko.com/api/v3/coins/${b}/market_chart?vs_currency=usd&days=7`).then(r=>r.json());
+
+  const labels=da.prices.map(p=>new Date(p[0]).toLocaleDateString());
+
+  if(cmpChart) cmpChart.destroy();
+  cmpChart=new Chart(cmp,{
+    type:"line",
+    data:{
+      labels,
+      datasets:[
+        {label:a,data:da.prices.map(p=>p[1]),borderColor:"cyan"},
+        {label:b,data:db.prices.map(p=>p[1]),borderColor:"orange"}
+      ]
+    }
+  });
+}
+</script>
+
+</body>
+</html>

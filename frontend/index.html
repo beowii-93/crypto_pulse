@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Crypto Tracker | Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="auth-container">
+
+  <div class="auth-card">
+    <h1>🚀 Crypto Tracker</h1>
+    <p id="subtitle">Login to continue</p>
+
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+
+    <button onclick="login()">Login</button>
+
+    <p class="switch">
+      New here?
+      <span onclick="switchMode()">Create account</span>
+    </p>
+  </div>
+
+</div>
+
+<script>
+const API = "http://localhost:5000/api";
+let isLogin = true;
+
+function switchMode(){
+  isLogin = !isLogin;
+  document.querySelector("button").innerText =
+    isLogin ? "Login" : "Register";
+  document.getElementById("subtitle").innerText =
+    isLogin ? "Login to continue" : "Create your account";
+  document.querySelector(".switch").innerHTML =
+    isLogin
+      ? `New here? <span onclick="switchMode()">Create account</span>`
+      : `Already have an account? <span onclick="switchMode()">Login</span>`;
+}
+
+async function login(){
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const endpoint = isLogin ? "login" : "register";
+
+  const res = await fetch(`${API}/auth/${endpoint}`,{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({email,password})
+  });
+
+  if(!res.ok){
+    alert("Authentication failed");
+    return;
+  }
+
+  if(isLogin){
+    const data = await res.json();
+    localStorage.setItem("token", data.token);
+    location.href = "dashboard.html";
+  }else{
+    alert("Registered successfully. Please login.");
+    switchMode();
+  }
+}
+</script>
+
+</body>
+</html>

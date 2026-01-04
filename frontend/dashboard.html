@@ -1,0 +1,46 @@
+<script>
+if(!localStorage.getItem("token")){
+  location.href="index.html";
+}
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<style>
+  button{
+    color:black;
+    border-radius:30px;
+    background-color:aquamarine;
+    height:30px;
+ 
+
+  }
+</style>
+<body>
+
+<header>
+  <h2>Dashboard</h2>
+  <h3>For checking each crypto coins data.</h3>
+  <div class="toggle">
+    <button onclick="loadChart(1)">24Hours</button>
+    <button onclick="loadChart(7)">7Days</button>
+    <button onclick="loadChart(30)">30Days</button>
+  </div>
+</header>
+
+<div class="grid" id="coinGrid"></div>
+
+<div class="chart-box">
+  <h2>Chart </h2>
+  <canvas id="chart"></canvas>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
