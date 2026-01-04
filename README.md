@@ -1,24 +1,24 @@
-# 🚀 Crypto Tracker Dashboard (MERN)
+#  Crypto Tracker Dashboard (MERN)
 
 A responsive, interactive cryptocurrency dashboard that shows live market data for top cryptocurrencies and interactive price charts.  
 This version uses a **Node.js + Express** backend with **MongoDB** for persistence (watchlist, saved coins, caching, etc.) and consumes the **CoinGecko API** for real-time crypto data.
 
 
-## ✨ Features
-- 📊 Live cryptocurrency market data (top coins)
-- 💱 Currency toggle: USD / INR
-- 📈 24-hour price change with green/red indicators
-- 🧮 Market cap & 24h trading volume
-- 🔍 Search coins by name or symbol
-- ↕️ Sort by:
+##  Features
+- Live cryptocurrency market data (top coins)
+- Currency toggle: USD / INR
+- 24-hour price change with green/red indicators
+- Market cap & 24h trading volume
+- Search coins by name or symbol
+- Sort by:
   - Market Cap
   - Price
   - 24h Change
-- 📉 Interactive 7-day price chart
-- ⭐ Watchlist / Saved coins (MongoDB)
-- 🔄 Manual refresh + optional auto-refresh
-- ⚠️ Graceful error handling for API/network issues
-- 📱 Fully responsive design (mobile, tablet, desktop)
+- Interactive 7-day price chart
+- Watchlist / Saved coins (MongoDB)
+- Manual refresh + optional auto-refresh
+- Graceful error handling for API/network issues
+- Fully responsive design (mobile, tablet, desktop)
 
 ## 🛠️ Tech Stack
 ### Frontend
@@ -32,7 +32,7 @@ This version uses a **Node.js + Express** backend with **MongoDB** for persisten
 - **MongoDB** (database)
 - **Mongoose** (ODM)
 
-## 🌐 External API
+##  External API
 Data powered by **CoinGecko API** (no API key required).
 
 - Market Data:  
@@ -45,15 +45,15 @@ Docs: https://www.coingecko.com/en/api/documentation
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 crypto-tracker/
-├── index.html      # Main HTML structure
-├── style.css       # Styling and responsiveness
-├── script.js       # App logic, API calls & chart rendering
-└── README.md       # Project documentation
+-├── index.html      # Main HTML structure
+-├── style.css       # Styling and responsiveness
+-├── script.js       # App logic, API calls & chart rendering
+-└── README.md       # Project documentation
 
-## ⚙️ How It Works
+##  How It Works
 1. **Frontend** requests market and chart data via the **Express API**
 2. **Backend** fetches data from **CoinGecko** and returns clean JSON responses
 3. **MongoDB** stores user watchlist / saved coins (and optionally cached results)
@@ -61,7 +61,7 @@ crypto-tracker/
 
 ---
 
-## 🔌 API Endpoints (Backend)
+##  API Endpoints (Backend)
 Base URL: `/api`
 
 ### Crypto
@@ -81,7 +81,7 @@ Base URL: `/api`
 - `DELETE /api/watchlist/:coinId
   - Remove a coin from watchlist
     
-### ▶️ Setup & Run Locally
+###  Setup & Run Locally
 
 1. Clone the repository
 ```bash
